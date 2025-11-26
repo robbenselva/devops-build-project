@@ -1,4 +1,4 @@
-# Stage 1: Use nginx to serve the build files
+# Stage 1: Usee nginx to serve the build files
 FROM nginx:alpine
 
 # Remove default nginx static content
@@ -11,4 +11,5 @@ COPY build/ /usr/share/nginx/html/
 EXPOSE 80
 
 # Start nginx
+
 CMD ["nginx", "-g", "daemon off;"]
