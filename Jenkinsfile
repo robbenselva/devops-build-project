@@ -33,7 +33,7 @@ pipeline {
             steps {
                 sh """
                     chmod +x build.sh
-                    ./build.sh ${IMAGE}
+                    ./build/build.sh ${IMAGE}
                 """
             }
         }
@@ -61,6 +61,7 @@ pipeline {
         }
     }
 }
+
 
 
 
