@@ -31,22 +31,12 @@ pipeline {
 
         stage('Build Image') {
             steps {
+              
               sh """
-              # debug info
-                echo "PWD: $(pwd)"
-                ls -la
-
-                # ensure build.sh has unix line endings (portable conversion)
-                if [ -f build.sh ]; then
-                  awk '{ sub("\\r$", ""); print }' build.sh > build.sh.unx && mv build.sh.unx build.sh
-                  chmod +x build.sh
-                  echo "Running build.sh ${IMAGE}"
-                  ./build.sh ${IMAGE}
-                else
-                  echo "ERROR: build.sh not found"
-                  exit 1
-                fi
+                    chmod +x build.sh
+                    ./build.sh ${IMAGE}
                 """
+                
             }
         }
 
@@ -73,6 +63,7 @@ pipeline {
         }
     }
 }
+
 
 
 
