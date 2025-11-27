@@ -33,8 +33,8 @@ pipeline {
             steps {
               
               sh """
-                    chmod +x build.sh
-                    ./build.sh ${IMAGE}
+                    sed -i 's/\r$//' build.sh
+                    'build.sh ${IMAGE}'
                 """
                 
             }
@@ -63,6 +63,7 @@ pipeline {
         }
     }
 }
+
 
 
 
