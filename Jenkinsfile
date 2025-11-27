@@ -32,8 +32,8 @@ pipeline {
         stage('Build Image') {
             steps {
                 sh """
-                    chmod +x build/build.sh
-                    ./build/build.sh ${IMAGE}
+                    chmod +x build.sh
+                    ./build.sh ${IMAGE}
                 """
             }
         }
@@ -53,14 +53,15 @@ pipeline {
             steps {
                 withCredentials([sshUserPrivateKey(credentialsId: "${EC2_KEY}", keyFileVariable: 'SSH_KEY')]) {
                     sh """
-                        scp -o StrictHostKeyChecking=no -i $SSH_KEY build/deploy.sh build/docker-compose.yml ${EC2_USER}@${EC2_HOST}:/tmp/
-                        ssh -o StrictHostKeyChecking=no -i $SSH_KEY ${EC2_USER}@${EC2_HOST} "cd /tmp && chmod +x build/deploy.sh && ./build/deploy.sh ${IMAGE}"
+                        scp -o StrictHostKeyChecking=no -i $SSH_KEY deploy.sh docker-compose.yml ${EC2_USER}@${EC2_HOST}:/tmp/
+                        ssh -o StrictHostKeyChecking=no -i $SSH_KEY ${EC2_USER}@${EC2_HOST} "cd /tmp && chmod +x deploy.sh && ./deploy.sh ${IMAGE}"
                     """
                 }
             }
         }
     }
 }
+
 
 
 
