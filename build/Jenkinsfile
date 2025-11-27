@@ -5,7 +5,7 @@ pipeline {
         DOCKERHUB_USER = "robbenselvaone"
         DOCKERHUB_CREDS = "dockerhub-creds"     // Jenkins credential ID
         EC2_KEY = "ec2-ssh-key"                 // Jenkins SSH key credential ID
-        EC2_HOST = "ec2-13-201-130-150.ap-south-1.compute.amazonaws.com"
+        EC2_HOST = "ec2-3-110-123-191.ap-south-1.compute.amazonaws.com"
         EC2_USER = "ubuntu"
     }
 
@@ -61,4 +61,5 @@ pipeline {
         }
     }
 }
+
 
